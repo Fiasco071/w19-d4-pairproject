@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  drupal:
+    build: .
+    image: nzavala/custom-drupal
+    ports:
+      - 8080:80
+    depends_on:
+      - "postgres"
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - drupal_data:/var/lib/postgresql/data
+
+volumes:
+  drupal_data:
