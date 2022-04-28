@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    image: flask_image
+    environment:
+      FLASK_ENV: development
+    ports:
+      - 8080:5000
+
+  redis:
+    image: redis:4.0.11-alpine
